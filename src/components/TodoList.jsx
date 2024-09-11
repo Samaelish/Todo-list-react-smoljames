@@ -21,6 +21,10 @@ const TodoList = () => {
     setTodos(localTodos)
   }, [])
 
+  function persistData(newList) {
+    localStorage.setItem('todos', JSON.stringify({ todos: newList }))
+  }
+
   function handleAddTodos(newTodo) {
     const newTodoList = [...todos, newTodo]
     persistData(newTodoList)
@@ -39,10 +43,6 @@ const TodoList = () => {
     const valueToBeEdited = todos[index]
     setTodoValue(valueToBeEdited)
     handleDeleteTodo(index)
-  }
-
-  function persistData(newList) {
-    localStorage.setItem('todos', JSON.stringify({ todos: newList }))
   }
 
   return (
